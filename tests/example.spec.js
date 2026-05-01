@@ -17,3 +17,13 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+
+
+test('fix me', async ({ page }) => {
+    await page.goto('https://www.saucedemo.com')
+    await page.locator('#username').fill('standard_user')  // ❌ wrong selector
+    await page.locator('#password').fill('secret_sauce')
+    await page.locator('[data-test="login-button"]').click()
+    await expect(page.locator('.title')).toHaveText('products')  // ❌ wrong text
+})

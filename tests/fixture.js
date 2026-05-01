@@ -1,18 +1,24 @@
- const base =require ('@playwright/test')
+const { test } = require('@playwright/test')
 
- exports.test = base.test.extend({
+// base.extend() is how you ADD your own fixtures to Playwright
+const test = base.extend({
 
-    loggedPage: async({page}, use) => {
-        await page.goto("https://automationexercise.com/login")
-        await page.locator("//input[@name='email']").first().fill("test123@gmail.com")
-        await page.locator("//input[@name='password']").first().fill("test123")
-        await page.getByRole('button',{name:'Login'}).click()
+    // 'saucePage' is your custom fixture name
+    // you'll use it like { saucePage } in your tests
+    saucePage: async ({ page }, use) => {
 
+        // SETUP — runs before test
+        await page.goto('https://www.saucedemo.com')
+
+        // USE — passes page to the test
         await use(page)
+
+        await page.context().clearCookies()
+
+        // TEARDOWN — runs after test (nothing needed here)
     }
 
+})
 
-
-
- })
- exports.expect = base.expect
+// export your custom test — not playwright's default one
+module.exports = { test }
