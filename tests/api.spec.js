@@ -121,7 +121,7 @@ test('Step 3 - create a booking', async ({ request }) => {
 })
 
 // Step 4 — update the booking (needs token!)
-test.only('Step 4 - update a booking', async ({ request }) => {
+test('Step 4 - update a booking', async ({ request }) => {
     const resp = await request.put(`${BASE_URL}/booking/${bookingId}`, {
         headers: {
             'Cookie': `token=${token}`  // 👈 token used here
