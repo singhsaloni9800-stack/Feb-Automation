@@ -30,7 +30,7 @@ test("Negative uploading scenario", async({page}) => {
 })
 
 
-test.only("sauce assertion", async(page) => { 
+test("sauce assertion", async(page) => { 
 
     await page.goto("https://www.saucedemo.com")
     await page.locator('#user-name').fill("standard_user")

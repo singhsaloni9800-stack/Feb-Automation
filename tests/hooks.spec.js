@@ -18,7 +18,7 @@ test('Login test with hooks', async ({page}) => {
 })
 
 
-test.only('Login with invalid creds', async ({page}) => {
+test('Login with invalid creds', async ({page}) => {
     await page.locator('#user-name').fill("proble_user")
     await page.locator('#password').fill("wrogng")
     await page.locator('#login-button').click()

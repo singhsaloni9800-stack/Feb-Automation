@@ -12,13 +12,13 @@
 
  })
 
- test.only("Iframe", async({page}) => {
+ test("Iframe", async({page}) => {
     await page.goto("https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe")
     const frame = page.frameLocator('#iframeResult')
     await frame.locator('button').click();
  })
 
- test.only('count iframes', async ({ page }) => {
+ test('count iframes', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/iframe');
 
   const frames = page.frames();
